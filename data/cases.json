@@ -1,0 +1,102 @@
+{
+  "about": "Ten real arXiv papers (title and abstract). Five fit the research question and five do not.",
+  "licence": "arXiv metadata (titles and abstracts) is CC0 1.0. Paper links are in each case's source.",
+  "research_question": "How do rain, fog and snow affect computer-vision systems for driving?",
+  "criteria": "Include studies of camera, LiDAR or other sensor perception for driving that work with rain, fog or snow. Exclude weather-science studies and radio or optical communication studies, even if they discuss rain or fog.",
+  "label_rules": {
+    "decision": "include: arXiv primary category cs.CV, about driving, names a sensor, and names rain, fog or snow. exclude: not listed in cs.CV or eess.IV; weather science (physics.ao-ph) or radio and optical links (eess.SP, cs.NI) that mention rain or fog.",
+    "paper_text": "The abstract split into numbered sentences [S1], [S2], ..."
+  },
+  "cases": [
+    {
+      "id": 1,
+      "source": "arXiv:2608.30610v2 (https://arxiv.org/abs/2608.30610v2), primary category physics.ao-ph. arXiv metadata is CC0.",
+      "title": "Universal ordinary differential equations and the parameterization of warm-rain processes",
+      "paper_text": "[S1] The parameterization of warm-rain formation is a long-standing problem in cloud microphysics because the evolution of bulk cloud variables cannot be derived uniquely from the kinetic collection equation (KCE).\n[S2] Universal ordinary differential equations (UODEs)provide a scientific machine learning framework that combines neural networks with ordinary differential equations and can learn dynamical operators directly from time series.\n[S3] Here, the UODE framework is applied to warm-rain formation by training on trajectories generated with a super-droplet model that approximates the KCE.\n[S4] In contrast to most previous machine-learning approaches, only the prognostic state variables are used for training, without requiring autoconversion or accretion rates as targets.\n[S5] The learned closure accurately reproduces the KCE trajectories within the training domain and, although not explicitly constrained to do so, yields autoconversion and accretion rates that closely resemble those diagnosed from the KCE.\n[S6] Analyzing the learned operator provides new insight into the structure of the widely used Seifert and Beheng (2001) warm-rain parameterization.\n[S7] In particular, it suggests that the empirical suppression of accretion primarily compensates for an overestimation of autoconversion at small rain fractions.\n[S8] Motivated by these findings, a refined analytical formulation is proposed that improves agreement with the KCE while retaining the simplicity of the original parameterization.\n[S9] The results demonstrate that UODEs can serve not only as accurate surrogate models but also as a tool for understanding and improving analytical parameterizations of cloud microphysical processes.",
+      "expected": {
+        "decision": "exclude"
+      }
+    },
+    {
+      "id": 2,
+      "source": "arXiv:2604.07980v1 (https://arxiv.org/abs/2604.07980v1), primary category cs.CV. arXiv metadata is CC0.",
+      "title": "Object-Centric Stereo Ranging for Autonomous Driving: From Dense Disparity to Census-Based Template Matching",
+      "paper_text": "[S1] Accurate depth estimation is critical for autonomous driving perception systems, particularly for long range vehicle detection on highways.\n[S2] Traditional dense stereo matching methods such as Block Matching (BM) and Semi Global Matching (SGM) produce per pixel disparity maps but suffer from high computational cost, sensitivity to radiometric differences between stereo cameras, and poor accuracy at long range where disparity values are small.\n[S3] In this report, we present a comprehensive stereo ranging system that integrates three complementary depth estimation approaches: dense BM/SGM disparity, object centric Census based template matching, and monocular geometric priors, within a unified detection ranging tracking pipeline.\n[S4] Our key contribution is a novel object centric Census based template matching algorithm that performs GPU accelerated sparse stereo matching directly within detected bounding boxes, employing a far close divide and conquer strategy, forward backward verification, occlusion aware sampling, and robust multi block aggregation.\n[S5] We further describe an online calibration refinement framework that combines auto rectification offset search, radar stereo voting based disparity correction, and object level radar stereo association for continuous extrinsic drift compensation.\n[S6] The complete system achieves real time performance through asynchronous GPU pipeline design and delivers robust ranging across diverse driving conditions including nighttime, rain, and varying illumination.",
+      "expected": {
+        "decision": "include"
+      }
+    },
+    {
+      "id": 3,
+      "source": "arXiv:2607.07290v2 (https://arxiv.org/abs/2607.07290v2), primary category physics.ao-ph. arXiv metadata is CC0.",
+      "title": "Super-Resolution of Radar/Raingauge-Analyzed Precipitation Using Gaussian Process Regression with a Steering Kernel",
+      "paper_text": "[S1] Super-resolution (SR), a technique for estimating a high-resolution (HR) image from a low-resolution image, has been used in meteorology for downscaling and resolution enhancement of observations.\n[S2] SR Gaussian process regression with a steering kernel (SRGP-SK) generates more accurate HR images than the original SR Gaussian process regression (SRGP), but it has not yet been applied to meteorological data.\n[S3] This study applied SRGP-SK to radar/rain gauge-analyzed precipitation for convective and stratiform cases and evaluated the results using the structural similarity index (SSIM) and radially averaged power spectral density (PSD).\n[S4] SRGP-SK achieved SSIM values comparable to those of bicubic interpolation and higher than those of SRGP while reconstructing finer precipitation structures; it recovered variations down to a wavelength of 6 km, compared with 8 km for bicubic interpolation.\n[S5] This difference may correspond to an approximately threefold increase in the number of convective cells.\n[S6] Among the kernel functions compared, the Matern 5/2 kernel yielded the highest geometric mean PSD ratio.\n[S7] Further investigation of this point could identify the statistical scaling characteristics of the precipitation field.\n[S8] This study evaluates only two precipitation cases; examining more cases is necessary before SRGP-SK can be applied more broadly.",
+      "expected": {
+        "decision": "exclude"
+      }
+    },
+    {
+      "id": 4,
+      "source": "arXiv:2605.06010v1 (https://arxiv.org/abs/2605.06010v1), primary category cs.CV. arXiv metadata is CC0.",
+      "title": "Adding Thermal Awareness to Visual Systems in Real-Time via Distilled Diffusion Models",
+      "paper_text": "[S1] Purely RGB-based vision models often fail to provide reliable cues in challenging scenarios such as nighttime and fog, leading to degraded performance and safety risks.\n[S2] Infrared imaging captures heat-emitting sources and provides critical complementary information, but existing high-fidelity fusion methods suffer from prohibitive latency, rendering them impractical for real-time edge deployment.\n[S3] To address this, we propose FusionProxy, a real-time image fusion module designed as a fully independent, plug-and-play component with diffusion level quality.\n[S4] FusionProxy exploits two complementary statistics of a teacher sample ensemble: per-pixel variance in raw image space, used to weight pixel-level supervision, and per-pixel variance inside frozen foundation backbones, used to route feature-level alignment spatially.\n[S5] Once trained, FusionProxy can be directly integrated into any visual perception system without joint optimization.\n[S6] Extensive experiments demonstrate that our method achieves superior performance on static recognition tasks and significantly enhances robustness in dynamic tasks, including closed-loop autonomous driving.\n[S7] Crucially, FusionProxy achieves real-time inference speeds on diverse platforms, from high-end GPUs to commodity hardware, providing a flexible and generalizable solution for all-day perception.",
+      "expected": {
+        "decision": "include"
+      }
+    },
+    {
+      "id": 5,
+      "source": "arXiv:2507.03246v1 (https://arxiv.org/abs/2507.03246v1), primary category eess.SP. arXiv metadata is CC0.",
+      "title": "Enhancing Satellite Quantum Key Distribution with Dual Band Reconfigurable Intelligent Surfaces",
+      "paper_text": "[S1] This paper presents a novel system architecture for hybrid satellite communications, integrating quantum key distribution (QKD) and classical radio frequency (RF) data transmission using a dual-band reconfigurable intelligent surface (RIS).\n[S2] The motivation is to address the growing need for global, secure, and reliable communications by leveraging the security of quantum optical links and the robustness of classical RF channels within a unified framework.\n[S3] By employing a frequency-selective RIS, the system independently optimizes both quantum (850 nm) and classical (S-band) channels in real time, dynamically adapting to environmental fluctuations such as atmospheric turbulence and rain attenuation.\n[S4] The joint optimization of the quantum bit error rate (QBER) and the classical signal-to noise ratio (SNR) is formulated as a quadratic unconstrained binary optimization (QUBO) problem, enabling efficient adaptive phase control utilizing both quantum and classical computational methods.\n[S5] Comprehensive theoretical modeling and simulations, benchmarked against experimental data from the Micius satellite, demonstrate substantial performance gains.\n[S6] Notably, the RIS assisted system reduces QBER from approximately 2.5% to 0.7%, increases the secure key rate (SKR) to over 30,000 bits per second, and enhances classical RF SNR by about 3 dB at high elevation angles.\n[S7] These results illustrate the practical potential of hybrid RIS-assisted satellite links to deliver robust, efficient, and secure global communications.",
+      "expected": {
+        "decision": "exclude"
+      }
+    },
+    {
+      "id": 6,
+      "source": "arXiv:2604.18940v1 (https://arxiv.org/abs/2604.18940v1), primary category cs.CV. arXiv metadata is CC0.",
+      "title": "Localization-Guided Foreground Augmentation in Autonomous Driving",
+      "paper_text": "[S1] Autonomous driving systems often degrade under adverse visibility conditions-such as rain, nighttime, or snow-where online scene geometry (e.g., lane dividers, road boundaries, and pedestrian crossings) becomes sparse or fragmented.\n[S2] While high-definition (HD) maps can provide missing structural context, they are costly to construct and maintain at scale.\n[S3] We propose Localization-Guided Foreground Augmentation (LG-FA), a lightweight and plug-and-play inference module that enhances foreground perception by enriching geometric context online.\n[S4] LG-FA: (i) incrementally constructs a sparse global vector layer from per-frame Bird's-Eye View (BEV) predictions; (ii) estimates ego pose via class-constrained geometric alignment, jointly improving localization and completing missing local topology; and (iii) reprojects the augmented foreground into a unified global frame to improve per-frame predictions.\n[S5] Experiments on challenging nuScenes sequences demonstrate that LG-FA improves the geometric completeness and temporal stability of BEV representations, reduces localization error, and produces globally consistent lane and topology reconstructions.\n[S6] The module can be seamlessly integrated into existing BEV-based perception systems without backbone modification.\n[S7] By providing a reliable geometric context prior, LG-FA enhances temporal consistency and supplies stable structural support for downstream modules such as tracking and decision-making.",
+      "expected": {
+        "decision": "include"
+      }
+    },
+    {
+      "id": 7,
+      "source": "arXiv:2406.15899v1 (https://arxiv.org/abs/2406.15899v1), primary category cs.NI. arXiv metadata is CC0.",
+      "title": "Shaping Radio Access to Match Variable Wireless Fronthaul Quality in Next-Generation Networks",
+      "paper_text": "[S1] The emergence of Centralized-RAN (C-RAN) has revolutionized mobile network infrastructure, offering streamlined cell-site engineering and enhanced network management capabilities.\n[S2] As C-RAN gains momentum, the focus shifts to optimizing fronthaul links.\n[S3] While fiber fronthaul guarantees performance, wireless alternatives provide cost efficiency and scalability, making them preferable in densely urbanized areas.\n[S4] However, wireless fronthaul often requires expensive over-dimensioning to overcome the challenging atmospheric attenuation typical of high frequencies.\n[S5] We propose a framework designed to continuously align radio access capacity with fronthaul link quality to overcome this rigidity.\n[S6] By gradually adapting radio access capacity to available fronthaul capacity, the framework ensures smooth degradation rather than complete service loss.\n[S7] Various strategies are proposed, considering factors like functional split and beamforming technology and exploring the tradeoff between adaptation strategy complexity and end-to-end system performance.\n[S8] Numerical evaluations using experimental rain attenuation data illustrate the framework's effectiveness in optimizing radio access capacity under realistically variable fronthaul link quality, ultimately proving the importance of adaptive capacity management in maximizing C-RAN efficiency.",
+      "expected": {
+        "decision": "exclude"
+      }
+    },
+    {
+      "id": 8,
+      "source": "arXiv:2608.01572v1 (https://arxiv.org/abs/2608.01572v1), primary category cs.CV. arXiv metadata is CC0.",
+      "title": "Enhancing Visual Perception in Foggy Conditions via Multiclass Fog Density Modeling",
+      "paper_text": "[S1] Autonomous driving (AD) systems have advanced rapidly over the past decade; however, robust perception under adverse weather conditions remains a major challenge, particularly in dense fog.\n[S2] In this work, we investigate fog-aware perception using synthetically generated fog data derived from the Waymo dataset.\n[S3] To support fog simulation, depth images are generated using an iterative learning approach.\n[S4] We consider five fog-density levels: clear, light fog, moderate fog, heavy fog, and very heavy fog.\n[S5] Instead of training a single unified model across all conditions, we train separate perception models for each fog-density level.\n[S6] Experimental results show that density-specific training improves performance in severe fog conditions.\n[S7] In particular, for the very heavy fog class, recall improves from 0.076 to 0.232, corresponding to an absolute gain of 15.6 percentage points.\n[S8] These findings suggest that deploying multiple specialized models, rather than a single general-purpose model, can improve perception robustness for autonomous vehicles under challenging visibility conditions.\n[S9] Future work will extend this strategy to additional sensing modalities, including LiDAR and radar, and evaluate generalization across diverse weather scenarios.",
+      "expected": {
+        "decision": "include"
+      }
+    },
+    {
+      "id": 9,
+      "source": "arXiv:2603.27995v1 (https://arxiv.org/abs/2603.27995v1), primary category cs.CV. arXiv metadata is CC0.",
+      "title": "UniDA3D: A Unified Domain-Adaptive Framework for Multi-View 3D Object Detection",
+      "paper_text": "[S1] Camera-only 3D object detection is critical for autonomous driving, offering a cost-effective alternative to LiDAR based methods.\n[S2] In particular, multi-view 3D object detection has emerged as a promising direction due to its balanced trade-off between performance and cost.\n[S3] However, existing methods often suffer significant performance degradation under complex environmental conditions such as nighttime, fog, and rain, primarily due to their reliance on training data collected mostly in ideal conditions.\n[S4] To address this challenge, we propose UniDA3D, a unified domain-adaptive multi-view 3D object detector designed for robust perception under diverse adverse conditions.\n[S5] UniDA3D formulates nighttime, rainy, and foggy scenes as a unified multi target domain adaptation problem and leverages a novel query guided domain discrepancy mitigation (QDDM) module to align object features between source and target domains at both batch and global levels via query-centric adversarial and contrastive learning.\n[S6] Furthermore, we introduce a domain-adaptive teacher student training pipeline with an exponential-moving-average teacher and dynamically updated high-quality pseudo labels to enhance consistency learning and suppress background noise in unlabeled target domains.\n[S7] In contrast to prior approaches that require separate training for each condition, UniDA3D performs a single unified training process across multiple domains, enabling robust all-weather 3D perception.\n[S8] On a synthesized multi-view 3D benchmark constructed by generating nighttime, rainy, and foggy counterparts from nuScenes (nuScenes-Night, nuScenes-Rain, and nuScenes-Haze), UniDA3D consistently outperforms state of-the-art camera-only multi-view 3D detectors under extreme conditions, achieving substantial gains in mAP and NDS while maintaining real-time inference efficiency.",
+      "expected": {
+        "decision": "include"
+      }
+    },
+    {
+      "id": 10,
+      "source": "arXiv:1907.10462v1 (https://arxiv.org/abs/1907.10462v1), primary category eess.SP. arXiv metadata is CC0.",
+      "title": "The NEFOCAST System for Detection and Estimation of Rainfall Fields by the Opportunistic Use of Broadcast Satellite Signals",
+      "paper_text": "[S1] In this paper we present results from the NEFOCAST project, funded by the Tuscany Region, aiming at detecting and estimating rainfall fields from the opportunistic use of the rain-induced excess attenuation incurred in the downlink channel by a commercial DVB satellite signal.\n[S2] The attenuation is estimated by reverse-engineering the effects of the various propagation phenomena affecting the received signal, among which, in first place, the perturbations factors affecting geostationary orbits, such as the gravitational attraction from the moon and the sun and the inhomogeneity in Earth mass distribution and, secondly, the small-scale irregularities in the atmospheric refractive index, causing rapid fluctuations in signal amplitude.\n[S3] The latter impairments, in particular, even if periodically counteracted by correction maneuvers, may give rise to significant departures of the actual satellite position from the nominal orbit.\n[S4] A further problem to deal with is the daily and seasonal random fluctuation of the rain height and altitude/size of the associated melting layer.\n[S5] All of the above issues lead to non-negligible random deviations from the dry nominal downlink attenuation, that can be misinterpreted as rain events.\n[S6] In this paper we show how to counteract these issues by employing two differentially-configured Kalman filters designed to track slow and fast changes of the received signal-to-noise ratio, so that the rain events can be reliably detected and the relevant rainfall rate estimated.",
+      "expected": {
+        "decision": "exclude"
+      }
+    }
+  ]
+}

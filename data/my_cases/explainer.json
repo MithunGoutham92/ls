@@ -1,0 +1,8 @@
+[
+  {
+    "title": "Lane detection for self-driving cars in heavy rain",
+    "abstract": "Camera-based lane detection often fails in heavy rain, because raindrops and road spray hide the lane markings. We test three lane detectors on 500 camera images of rainy roads taken from a self-driving test car. A detector trained with simulated rain finds 15% more lane markings than the same detector trained only on dry roads.",
+    "decision": "include",
+    "note": "A made-up paper, only to show the format. Replace it with a real paper from arxiv.org, and add its link as \"source\"."
+  }
+]
