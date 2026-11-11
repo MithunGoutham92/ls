@@ -2,6 +2,8 @@
 
 LitScout helps with a literature review. It turns a research question into search queries, screens papers against the criteria, and for each included paper pulls out details with exact quotes, writes a summary that names its sentences, and explains the paper in plain words.
 
+Read all of this README before you start. If you do not understand a word, a command or a line of code, search for it online and read about it.
+
 ## What the assistant does
 
 `python3 main.py` uses the tools like this.
@@ -25,7 +27,7 @@ your own tool on its own (see "Test and score your tool").
 ## Get the code
 
 1. On this project's GitHub page, click the green **Code** button, then **Download ZIP**.
-2. Unzip the file. You get a folder whose name ends in `-main`, such as `LitScout-main`.
+2. Unzip the file. You get a folder whose name ends in `-main`, such as `ls-main`.
    On Windows, "Extract All" can put it inside a second folder with the same name: use the folder that has `main.py` in it.
 3. In VS Code, choose **File > Open Folder...** and pick that folder. The VS Code Terminal then starts in it.
    Run every command from this folder.
@@ -34,31 +36,20 @@ your own tool on its own (see "Test and score your tool").
 
 1. Install Ollama from https://ollama.com and open it. It must be running whenever you use the project.
 2. In the Terminal, run `ollama pull llama3.2`. This downloads the model (about 2 GB), once.
-3. Install the Python package: `python3 -m pip install -r requirements.txt`.
-4. Check it: run `python3 main.py`. It starts and waits for you to type. Until the tools are written, it says
-   "Not ready yet" for anything you type. Type `quit` to stop.
-
-On Windows, type `py` where this README says `python3`. For example: `py -m pip install -r requirements.txt`.
+3. If you're on Mac, install the Python packages: `python3 -m pip install -r requirements.txt`. Check it: run `python3 main.py`. It starts and waits for you to type. Until the tools are written, it says "Not ready yet" for anything you type. Type `quit` to stop.
+4. If you're on Windows, type `py` where this README says `python3`. For example, above: `py -m pip install -r requirements.txt`.
 
 ## Your work, step by step
 
 Use your own file and tool name where this list says `llm/screener.py` and `screener`.
 
-1. Do "Get the code" and "Set up" above.
-2. Find your role in "Find your file". Open your tool file and read its docstring: it is the contract.
+1. If you haven't already, complete "Get the code" and "Set up" above.
+2. Find your role in "Find your file" below. Open your tool file and read its docstring.
 3. Read your role in "Your role" below. It says what score.py checks and gives tips.
 4. In your tool file, write the four prompt parts (`instruction`, `context`, `examples`, `output_format`).
    They start as TODO.
 5. Follow the TODO comments in your function. Write the code, then delete the `raise NotImplementedError` line.
-6. Run `python3 llm/screener.py` and try your function on one input.
-7. Run `python3 score.py screener given`. Change your prompt and code until most of the 10 given
-   papers pass. The teacher's version scores 8 to 10 of 10.
-8. Add your 30 test papers in your cases file (see the section "Add 30 test papers of your own"), then run
-   `python3 score.py screener` for the score out of 40.
-9. Save your tool file and your cases file. Give them to your teacher or team.
-
-When your function and your prompt parts are written, your file does the same job as the teacher's
-`Completed` version.
+6. Run `python3 llm/screener.py`. This runs the test using the `if __name__ == "__main__":` at the bottom of your file. It uses only your function, so it works even before your teammates' tools are written.
 
 ## Find your file
 
@@ -106,7 +97,6 @@ Every tool follows the same steps:
    If not, ask again. Use a `while` loop that stops after 3 tries.
 5. If the 3rd answer is still not usable, `raise ValueError("...")` with a short message. `main.py` then says
    "Sorry, we couldn't process this" and saves nothing.
-6. Return what the contract says.
 
 Some tools need more than one LLM call, or code that does part of the work. The TODO comments in your
 function and the tips for your role below say how.
@@ -159,7 +149,7 @@ Write `explain(paper_text, audience)`. It returns `{"explanation": ..., "quote":
 - **Tip:** Ask for plain words and no new facts.
 - **Tip:** A quote is copied without its `[S1]` tag. Check that it is in `paper_text`, and ask again if it is not.
 
-## Add 30 test papers of your own
+## Each team member should add 30 test papers of your own
 
 The 10 given papers in `data/cases.json` are only a start. Add 30 more for your tool, so that it is
 tested on 40 papers.
@@ -186,7 +176,7 @@ tested on 40 papers.
 ```
 
 3. Run `python3 score.py screener mine` (with your tool's name). score.py first checks your file. If a
-   paper has a missing field or a wrong value, it tells you which one and scores nothing until you fix it.
+   paper has a missing field or a wrong value, it tells you which one and doesn't score until you fix it.
 
 Rules for good test papers:
 
@@ -213,7 +203,6 @@ Use your own tool's name in these commands.
   your paper 3. One paper is quicker while you change your prompt.
 - An LLM does not give the same answer every time. Run score.py two or three times before you decide that a
   change made your prompt better.
-- The teacher's version of each tool scores 8 to 10 of 10 on the given papers with llama3.2.
 
 What the messages mean:
 
@@ -231,17 +220,13 @@ What the messages mean:
 To try another local model, download it with `ollama pull <name>` (the names are on https://ollama.com/search)
 and change `model="llama3.2"` in your file. Score both models and compare.
 
-## Files you do not change
+## Files you should not change
 
 - `llm/utils.py` (utils is short for utilities): functions that every tool can use. `load_data(name)` and `load_text(name)` read a file in `data/`, `save_data(name, data)` writes one, `split_sentences(text)` gives a list of sentences, and `read_json(text)` turns the LLM's answer into a dict (`{}` if the answer is not complete JSON).
 - `llm/__init__.py`: makes `llm/` a package, so `main.py` can import your tool.
 - `score.py`: checks your tool on the given papers and on yours.
 - `main.py`: joins all the tools.
 - `data/`: the given papers and the data that `main.py` saves. In `data/my_cases/`, change only your own cases file.
-
-## Run the whole assistant
-
-`python3 main.py`. Type a paper number, `all`, `search`, or `quit`.
 
 ## Data
 
@@ -256,4 +241,4 @@ Titles and abstracts come from arXiv metadata, which is CC0 1.0. Each paper's ar
 
 - Five papers fit the research question and five do not. The five that do not still talk about rain or fog (weather science, radio links), so the Screener must read carefully.
 - This project uses the local model llama3.2. Every call has `options={"num_predict": 500}`, so an answer that
-  runs on too long stops instead of hanging your program.
+  runs on too long stops.
